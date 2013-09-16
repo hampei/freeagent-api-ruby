@@ -142,7 +142,8 @@ module FreeAgent
           if persisted?
             FreeAgent.client.put("#{self.class.endpoint[:plural]}/#{id}", data)            
           else
-            FreeAgent.client.post(self.class.endpoint[:plural], data)
+            resp = FreeAgent.client.post(self.class.endpoint[:plural], data)
+            initialize(resp[self.class.endpoint[:single]])
           end
           true
         rescue FreeAgent::ApiError => error
