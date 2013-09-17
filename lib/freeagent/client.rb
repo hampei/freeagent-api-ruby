@@ -124,6 +124,13 @@ module FreeAgent
       request(:delete, "#{Client.site}#{path}", :data => data).parsed
     end
 
+    def self.resource_url(resource_or_type, id=nil)
+      path = resource_or_type.is_a?(FreeAgent::Resource) ? 
+        "#{resource_or_type.class.endpoint[:plural]}/#{resource_or_type.id}" : 
+        "#{resource_or_type}/#{id}"
+      "#{self.site}#{path}"
+    end
+
     private
 
     # Finds link relations from 'Link' response header

@@ -148,4 +148,18 @@ describe FreeAgent::Client do
   describe '#delete' do
     # TODO
   end
+
+  describe 'resource_url' do
+    before :each do
+      @contact = FreeAgent::Contact.new('url' => 'https://api.freeagent.com/v2/contacts/5')
+    end
+
+    it 'should accept a type and id' do
+      FreeAgent::Client.resource_url('contacts', 5).should eql 'https://api.freeagent.com/v2/contacts/5'
+    end
+    it 'should accept a resource' do
+      FreeAgent::Client.resource_url(@contact).should eql 'https://api.freeagent.com/v2/contacts/5'
+    end
+
+  end
 end
