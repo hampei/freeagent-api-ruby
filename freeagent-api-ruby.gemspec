@@ -12,6 +12,9 @@ Gem::Specification.new do |s|
   s.email = 'murray@freeagent.com'
   s.homepage = "https://github.com/murraysum/freeagent-api-ruby"
 
+
+  s.required_ruby_version = '>= 2.5'
+
   s.add_development_dependency "rspec"
   s.add_development_dependency "pry"
 

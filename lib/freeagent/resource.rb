@@ -77,7 +77,7 @@ module FreeAgent
     def self.decimal_writer(*args)
       args.each do |attr|
         define_method("#{attr.to_s}=".to_sym) do |decimal|
-          decimal = decimal.is_a?(BigDecimal) ? decimal : BigDecimal.new(decimal)
+          decimal = decimal.is_a?(BigDecimal) ? decimal : BigDecimal(decimal)
           instance_variable_set("@#{attr}", decimal)
         end
       end
